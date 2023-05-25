@@ -46,7 +46,7 @@ def chat(prompt,text):
         # 解析响应
         if response.status_code == 200:
             data = response.json()
-            text = data["choices"][0]["message"]
+            text = data["choices"][0]["message"]["content"]
 
             return text
         else:
