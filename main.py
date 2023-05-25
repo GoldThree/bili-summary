@@ -6,6 +6,7 @@ from reduce import reduce_bilibili_subtitle_timestamp
 from helper import get_small_size_transcripts
 from notion import insert2notion
 from flask import Flask, Response, json, request
+from openai_lib import chat
 
 app = Flask(__name__)
 
@@ -125,19 +126,6 @@ def segTranscipt(transcript):
         for j in new_l
     ]
     return segedTranscipt
-
-
-def chat(prompt, text):
-    openai.api_key = "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"
-    completions = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": text},
-        ],
-    )
-    ans = completions.choices[0].message.content
-    return ans
 
 
 def main():
