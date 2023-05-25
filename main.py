@@ -216,8 +216,18 @@ def bilibili_summary():
             summarized_text += "\n" + response
         print(summarized_text)
         insert2notion(token, database_id, bvid, summarized_text)
+        resp = Response(
+            json.dumps({"code": "2000", "message": "完成任务，请到notion中查看结果", "data": {}}),
+            content_type="application/json",
+        )
+        return resp
     else:
         print("字幕获取失败")
+        resp = Response(
+            json.dumps({"code": "2000", "message": "获取字幕失败", "data": {}}),
+            content_type="application/json",
+        )
+        return resp
 
 
 if __name__ == "__main__":
