@@ -1,10 +1,13 @@
 import openai
 import os
 
+os.environ["HTTP_PROXY"] = os.getenv("http_proxy")
+os.environ["HTTPS_PROXY"] = os.getenv("https_proxy")
+
 
 def chat(prompt, text):
     openai.api_key = os.getenv("openai_key")
-    print(os.getenv("openai_key"))
+    print(os.getenv("openai_key"),os.getenv("http_proxy"),os.getenv("https_proxy"))
     # chat_completion = openai.ChatCompletion.create(
     #     model="gpt-3.5-turbo", messages=[{"role": "user", "content": "Hello world"}]
     # )
