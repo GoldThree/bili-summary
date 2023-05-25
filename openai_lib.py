@@ -1,9 +1,10 @@
 import openai
+import os
 
 
 def chat(prompt, text):
-    openai.api_key = "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"
-
+    openai.api_key = os.getenv("openai_key")
+    print(os.getenv("openai_key"))
     # chat_completion = openai.ChatCompletion.create(
     #     model="gpt-3.5-turbo", messages=[{"role": "user", "content": "Hello world"}]
     # )
